@@ -1,6 +1,7 @@
 {
   "parent": "minecraft:block/crop",
+  "render_type": "minecraft:cutout",
   "textures": {
-    "crop": "foodables:block/onion_crop_stage0"
+    "crop": "foodables:block/red_onion_crop_stage0"
   }
 }

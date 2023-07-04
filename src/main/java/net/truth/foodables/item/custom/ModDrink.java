@@ -1,4 +1,4 @@
-package net.truth.foodables.item;
+package net.truth.foodables.item.custom;
 
 import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.server.level.ServerPlayer;

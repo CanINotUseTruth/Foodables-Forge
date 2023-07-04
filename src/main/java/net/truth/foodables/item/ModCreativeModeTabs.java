@@ -124,7 +124,7 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.HONEY_CAKE_MIX.get());
                         output.accept(ModItems.APPLE_CAKE_MIX.get());
                         output.accept(ModItems.BERRY_CAKE_MIX.get());
-                        output.accept(ModItems.ORANGE_JUICE.get());
+                        output.accept(ModItems.ORANGE_CAKE_MIX.get());
                         output.accept(ModItems.BANANA_CAKE_MIX.get());
                         output.accept(ModItems.CHOCOLATE_CAKE_MIX.get());
                         output.accept(ModItems.BAKED_PLAIN_CAKE.get());
@@ -151,18 +151,53 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.WHEAT_FLOUR.get());
                         output.accept(ModItems.GROUND_COCOA.get());
 
-                        // TODO Seed Items
+                        // Seed Items
+                        output.accept(ModItems.LETTUCE_SEEDS.get());
+                        output.accept(ModItems.TOMATO_SEEDS.get());
+                        output.accept(ModItems.BROWN_ONION_SEEDS.get());
+                        output.accept(ModItems.RED_ONION_SEEDS.get());
+                        output.accept(ModItems.GARLIC_SEEDS.get());
 
                         // - Blocks -
-                        // TODO Drying Racks
-
+                        // Drying Racks
+                        output.accept(ModBlocks.OAK_DRYING_RACK.get());
+                        output.accept(ModBlocks.SPRUCE_DRYING_RACK.get());
+                        output.accept(ModBlocks.BIRCH_DRYING_RACK.get());
+                        output.accept(ModBlocks.JUNGLE_DRYING_RACK.get());
+                        output.accept(ModBlocks.DARK_OAK_DRYING_RACK.get());
+                        output.accept(ModBlocks.ACACIA_DRYING_RACK.get());
+                        output.accept(ModBlocks.MANGROVE_DRYING_RACK.get());
+                        output.accept(ModBlocks.CHERRY_DRYING_RACK.get());
+                        output.accept(ModBlocks.CRIMSON_DRYING_RACK.get());
+                        output.accept(ModBlocks.WARPED_DRYING_RACK.get());
 
                         // Ores
                         output.accept(ModBlocks.SALT_ORE.get());
 
-                        // TODO Tree Related Blocks
+                        // Tree Related Blocks
+                        output.accept(ModBlocks.APPLE_LEAVES.get());
+                        output.accept(ModBlocks.LEMON_LEAVES.get());
+                        output.accept(ModBlocks.LIME_LEAVES.get());
+                        output.accept(ModBlocks.ORANGE_LEAVES.get());
+                        output.accept(ModBlocks.MANGO_LEAVES.get());
+                        output.accept(ModBlocks.BANANA_LEAVES.get());
+                        output.accept(ModBlocks.PEPPERCORN_LEAVES.get());
+                        output.accept(ModBlocks.APPLE_SAPLING.get());
+                        output.accept(ModBlocks.LEMON_SAPLING.get());
+                        output.accept(ModBlocks.LIME_SAPLING.get());
+                        output.accept(ModBlocks.ORANGE_SAPLING.get());
+                        output.accept(ModBlocks.MANGO_SAPLING.get());
+                        output.accept(ModBlocks.BANANA_SAPLING.get());
+                        output.accept(ModBlocks.PEPPERCORN_SAPLING.get());
 
-                        // TODO Cake Blocks
+
+                        // Cake Blocks
+                        output.accept(ModBlocks.HONEY_CAKE.get());
+                        output.accept(ModBlocks.APPLE_CAKE.get());
+                        output.accept(ModBlocks.BERRY_CAKE.get());
+                        output.accept(ModBlocks.ORANGE_CAKE.get());
+                        output.accept(ModBlocks.BANANA_CAKE.get());
+                        output.accept(ModBlocks.CHOCOLATE_CAKE.get());
 
                     }).build());
 

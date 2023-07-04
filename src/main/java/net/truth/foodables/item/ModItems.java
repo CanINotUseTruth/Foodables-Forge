@@ -2,12 +2,15 @@ package net.truth.foodables.item;
 
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemNameBlockItem;
 import net.minecraft.world.item.Items;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 import net.truth.foodables.Foodables;
+import net.truth.foodables.block.ModBlocks;
+import net.truth.foodables.item.custom.ModDrink;
 
 public class ModItems {
     public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, Foodables.MOD_ID);
@@ -29,6 +32,18 @@ public class ModItems {
             .stacksTo(16)));
     public static final RegistryObject<Item> CAKE_TIN = ITEMS.register("cake_tin", () -> new Item(new Item.Properties()
             .stacksTo(16)));
+
+    // - Seed Items -
+    public static final RegistryObject<Item> LETTUCE_SEEDS = ITEMS.register("lettuce_seeds",
+            () -> new ItemNameBlockItem(ModBlocks.LETTUCE_CROP.get(), new Item.Properties()));
+    public static final RegistryObject<Item> TOMATO_SEEDS = ITEMS.register("tomato_seeds",
+            () -> new ItemNameBlockItem(ModBlocks.TOMATO_CROP.get(), new Item.Properties()));
+    public static final RegistryObject<Item> BROWN_ONION_SEEDS = ITEMS.register("brown_onion_seeds",
+            () -> new ItemNameBlockItem(ModBlocks.BROWN_ONION_CROP.get(), new Item.Properties()));
+    public static final RegistryObject<Item> RED_ONION_SEEDS = ITEMS.register("red_onion_seeds",
+            () -> new ItemNameBlockItem(ModBlocks.RED_ONION_CROP.get(), new Item.Properties()));
+    public static final RegistryObject<Item> GARLIC_SEEDS = ITEMS.register("garlic_seeds",
+            () -> new ItemNameBlockItem(ModBlocks.GARLIC_CROP.get(), new Item.Properties()));
 
     //  - Food Items -
     // Veggies
@@ -223,8 +238,6 @@ public class ModItems {
     public static final RegistryObject<Item> GROUND_SALT = ITEMS.register("ground_salt", () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> WHEAT_FLOUR = ITEMS.register("wheat_flour", () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> GROUND_COCOA = ITEMS.register("ground_cocoa", () -> new Item(new Item.Properties()));
-
-    // TODO - Seed Items -
 
 
     public static void register(IEventBus eventBus) {
