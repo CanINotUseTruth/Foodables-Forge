@@ -1,6 +1,6 @@
 {
   "type": "forge:add_features",
-  "biomes": "#forge:is_plains",
+  "biomes": "#minecraft:is_jungle",
   "features": "foodables:banana_placed",
   "step": "vegetal_decoration"
 }

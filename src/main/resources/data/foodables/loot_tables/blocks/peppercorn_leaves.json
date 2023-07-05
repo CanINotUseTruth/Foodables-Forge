@@ -160,7 +160,7 @@
               "enchantment": "minecraft:fortune"
             }
           ],
-          "name": "foodables:peppercorn_item"
+          "name": "foodables:peppercorn"
         }
       ],
       "rolls": 1.0

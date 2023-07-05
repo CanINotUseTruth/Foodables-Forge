@@ -1,0 +1,12 @@
+{
+  "type": "foodables:rack_drying",
+  "dryingTime": 10,
+  "ingredients": [
+    {
+      "item": "foodables:wet_carton"
+    }
+  ],
+  "result": {
+    "item": "foodables:carton"
+  }
+}

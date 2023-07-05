@@ -1,6 +1,6 @@
 {
   "type": "forge:add_features",
-  "biomes": "#forge:is_plains",
-  "features": "foodables:apple_placed",
-  "step": "vegetal_decoration"
+  "biomes": "#minecraft:is_taiga",
+  "features": "foodables:salt_ore_placed",
+  "step": "underground_ores"
 }

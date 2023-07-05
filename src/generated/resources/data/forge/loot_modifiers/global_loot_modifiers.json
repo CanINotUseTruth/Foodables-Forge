@@ -1,0 +1,11 @@
+{
+  "entries": [
+    "foodables:garlic_seeds_from_grass",
+    "foodables:squid_from_squid",
+    "foodables:lettuce_seeds_from_grass",
+    "foodables:brown_onion_seeds_from_grass",
+    "foodables:tomato_seeds_from_grass",
+    "foodables:red_onion_seeds_from_grass"
+  ],
+  "replace": false
+}

@@ -1,0 +1,12 @@
+{
+  "type": "foodables:rack_drying",
+  "dryingTime": 1500,
+  "ingredients": [
+    {
+      "item": "foodables:salted_zombie_flesh"
+    }
+  ],
+  "result": {
+    "item": "foodables:zombie_jerky"
+  }
+}

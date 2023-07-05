@@ -1,0 +1,12 @@
+{
+  "type": "foodables:rack_drying",
+  "dryingTime": 3000,
+  "ingredients": [
+    {
+      "item": "foodables:salted_beef_strips"
+    }
+  ],
+  "result": {
+    "item": "foodables:beef_jerky"
+  }
+}

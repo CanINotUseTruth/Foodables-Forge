@@ -15,6 +15,7 @@ import java.util.concurrent.CompletableFuture;
 @Mod.EventBusSubscriber(modid = Foodables.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD)
 public class DataGenerators {
 
+    // TODO Move all recipes over to data gen
     @SubscribeEvent
     public static void gatherData(GatherDataEvent event) {
         DataGenerator generator = event.getGenerator();
@@ -22,7 +23,11 @@ public class DataGenerators {
         ExistingFileHelper existingFileHelper = event.getExistingFileHelper();
         CompletableFuture<HolderLookup.Provider> lookupProvider = event.getLookupProvider();
 
-        generator.addProvider(event.includeServer(), new ModWorldGenProvider(packOutput, lookupProvider));
-    }
+        generator.addProvider(event.includeServer(), new ModRecipeProvider(packOutput));
 
+        generator.addProvider(event.includeServer(), new ModWorldGenProvider(packOutput, lookupProvider));
+
+        generator.addProvider(event.includeClient(), new ModGlobalLootModifierProvider(packOutput));
+
+    }
 }

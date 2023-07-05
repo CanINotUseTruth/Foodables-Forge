@@ -1,0 +1,8 @@
+// 1.20.1	2023-07-05T16:38:02.5537261	Global Loot Modifiers : foodables
+f5daa915d4ff3cb86e1e1cd700556393569c4fb4 data/foodables/loot_modifiers/brown_onion_seeds_from_grass.json
+78421ddb7aad4788fa2742a1434830b130e3e591 data/foodables/loot_modifiers/garlic_seeds_from_grass.json
+79deeaafe57d41a97aacc2f27e0c34a16c376f0f data/foodables/loot_modifiers/lettuce_seeds_from_grass.json
+16c21e1fe39ec8d930be843294586ed9b3f27ee9 data/foodables/loot_modifiers/red_onion_seeds_from_grass.json
+acfc6c2584a313833e606650e5efb69facbba2df data/foodables/loot_modifiers/squid_from_squid.json
+56570f366887e350ec5ac4ac16df0999f7e599c3 data/foodables/loot_modifiers/tomato_seeds_from_grass.json
+d5b008425cfc0f0c2dce2cce011eeac58b03c41a data/forge/loot_modifiers/global_loot_modifiers.json

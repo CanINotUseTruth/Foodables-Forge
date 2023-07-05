@@ -1,0 +1,12 @@
+{
+  "type": "foodables:rack_drying",
+  "dryingTime": 3000,
+  "ingredients": [
+    {
+      "item": "foodables:salted_bacon_strips"
+    }
+  ],
+  "result": {
+    "item": "foodables:bacon_jerky"
+  }
+}
