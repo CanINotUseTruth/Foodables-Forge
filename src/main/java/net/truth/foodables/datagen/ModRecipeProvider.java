@@ -19,8 +19,7 @@ public class ModRecipeProvider extends RecipeProvider{
     @Override
     protected void buildRecipes(Consumer<FinishedRecipe> pWriter) {
 
-        // TODO Change Carton time - testing purposes only
-        new DryingRackRecipeBuilder(ModItems.WET_CARTON.get(), ModItems.CARTON.get(), 10, 1)
+        new DryingRackRecipeBuilder(ModItems.WET_CARTON.get(), ModItems.CARTON.get(), 1200, 1)
                 .unlockedBy("has_drying_rack", has(ModBlocks.OAK_DRYING_RACK.get())).save(pWriter);
         new DryingRackRecipeBuilder(ModItems.SALTED_BACON_STRIPS.get(), ModItems.BACON_JERKY.get(), 3000, 1)
                 .unlockedBy("has_drying_rack", has(ModBlocks.OAK_DRYING_RACK.get())).save(pWriter);

@@ -1,4 +1,4 @@
-// 1.20.1	2023-07-06T00:08:09.6254008	Recipes
+// 1.20.1	2023-07-06T19:25:02.833684	Recipes
 c95ee28ea958f9335aa7f91c4e5f0b8c71ee5767 data/foodables/advancements/recipes/bacon_jerky.json
 45d245cff571983f8419919b68d774b231b03682 data/foodables/advancements/recipes/beef_jerky.json
 3b97ce257329004da7234bc9cf467e291dffcb4f data/foodables/advancements/recipes/carton.json
@@ -9,7 +9,7 @@ c9780014f80e26d25b454681a62ed764356bb63d data/foodables/advancements/recipes/rab
 e52ec8532ba4bdec54a272f83294d0ea1fe18829 data/foodables/advancements/recipes/zombie_jerky.json
 0d1a7ef683b85ead923961c93f490ec1e355d900 data/foodables/recipes/bacon_jerky_from_rack_drying.json
 3e1d6d13b075db2bbe717312c3a38472afe57864 data/foodables/recipes/beef_jerky_from_rack_drying.json
-fda5f37ff7b56b8e3023895edf967dc753fa864b data/foodables/recipes/carton_from_rack_drying.json
+f86b2af0a8469ce11e11ee41697360a47b8592b6 data/foodables/recipes/carton_from_rack_drying.json
 aa3239e651596bb61dfe2119dc2de66213522fa3 data/foodables/recipes/chicken_jerky_from_rack_drying.json
 7bb218e8ea42e4a438dd5b27a0fa282734adad7d data/foodables/recipes/dried_peppercorn_from_rack_drying.json
 326046e43bc3bb26522e24d2c6b6223ac96fd2cc data/foodables/recipes/lamb_jerky_from_rack_drying.json

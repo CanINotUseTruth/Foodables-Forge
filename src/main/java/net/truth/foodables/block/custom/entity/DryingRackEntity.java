@@ -2,10 +2,15 @@ package net.truth.foodables.block.custom.entity;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.network.Connection;
+import net.minecraft.network.protocol.Packet;
+import net.minecraft.network.protocol.game.ClientGamePacketListener;
+import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
 import net.minecraft.world.Containers;
 import net.minecraft.world.SimpleContainer;
 import net.minecraft.world.inventory.ContainerData;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
@@ -14,6 +19,7 @@ import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.ItemStackHandler;
 import net.truth.foodables.recipe.DryingRackRecipe;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.Objects;
 import java.util.Optional;
@@ -21,8 +27,11 @@ import java.util.Optional;
 public class DryingRackEntity extends BlockEntity {
     public final ItemStackHandler itemStackHandler = new ItemStackHandler(1) {
         @Override
-        protected  void onContentsChanged(int slot) {
+        protected void onContentsChanged(int slot) {
             setChanged();
+            if(!level.isClientSide()) {
+                level.sendBlockUpdated(getBlockPos(),getBlockState(), getBlockState(), 3);
+            }
         }
 
         @Override
@@ -38,6 +47,10 @@ public class DryingRackEntity extends BlockEntity {
     private int maxProgress = 10;
 
     private LazyOptional<IItemHandler> lazyItemHandler = LazyOptional.empty();
+
+    public ItemStack getRenderStack() {
+        return itemStackHandler.getStackInSlot(INPUT_SLOT);
+    }
 
     public DryingRackEntity(BlockPos pPos, BlockState pBlockState) {
         super(ModBlockEntities.DRYING_RACK_BE.get(), pPos, pBlockState);
@@ -68,10 +81,7 @@ public class DryingRackEntity extends BlockEntity {
 
     public void drops() {
         SimpleContainer inventory = new SimpleContainer(itemStackHandler.getSlots());
-        for (int i = 0; i < itemStackHandler.getSlots(); i++) {
-            inventory.setItem(i, itemStackHandler.getStackInSlot(i));
-        }
-
+        inventory.setItem(0, itemStackHandler.getStackInSlot(INPUT_SLOT));
         Containers.dropContents(Objects.requireNonNull(this.level), this.worldPosition, inventory);
     }
 
@@ -142,23 +152,39 @@ public class DryingRackEntity extends BlockEntity {
 
     private boolean hasRecipe() {
         Optional<DryingRackRecipe> recipe = getCurrentRecipe();
-        if (recipe.isEmpty()) return false;
-        return true;
+        return recipe.isPresent();
     }
 
     private boolean hasRecipe(ItemStack stack) {
         SimpleContainer inventory = new SimpleContainer(1);
         inventory.setItem(0, stack);
         Optional<DryingRackRecipe> recipe = Objects.requireNonNull(this.level).getRecipeManager().getRecipeFor(DryingRackRecipe.Type.INSTANCE, inventory, level);
-        if (recipe.isEmpty()) return false;
-        return true;
+        return recipe.isPresent();
     }
 
     private Optional<DryingRackRecipe> getCurrentRecipe() {
         SimpleContainer inventory = new SimpleContainer(this.itemStackHandler.getSlots());
-        inventory.setItem(0, this.itemStackHandler.getStackInSlot(0));
+        inventory.setItem(0, this.itemStackHandler.getStackInSlot(INPUT_SLOT));
         return Objects.requireNonNull(this.level).getRecipeManager().getRecipeFor(DryingRackRecipe.Type.INSTANCE, inventory, level);
     }
 
+    @Nullable
+    @Override
+    public Packet<ClientGamePacketListener> getUpdatePacket() {
+        return ClientboundBlockEntityDataPacket.create(this);
+    }
 
+    @Override
+    public CompoundTag getUpdateTag() {
+        return saveWithoutMetadata();
+    }
+
+    @Override
+    public void onDataPacket(Connection net, ClientboundBlockEntityDataPacket pkt) {
+        super.onDataPacket(net, pkt);
+    }
+
+    public void clear() {
+        itemStackHandler.setStackInSlot(0, new ItemStack(Items.AIR, 0));
+    }
 }

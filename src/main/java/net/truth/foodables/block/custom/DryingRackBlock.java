@@ -128,6 +128,7 @@ public class DryingRackBlock extends BaseEntityBlock implements SimpleWaterlogge
             if (!pLevel.isClientSide && !pPlayer.addItem(itemStack.split(1))) {
                 pPlayer.drop(itemStack.split(1), false);
             }
+            dryingRackEntity.clear();
             return InteractionResult.sidedSuccess(true);
         }
     }

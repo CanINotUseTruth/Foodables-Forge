@@ -1,0 +1,33 @@
+TODO : Before Release
+    - Make Squids drop from fishing loot - until MobLoot is configurable
+    - Berry Bushes
+    - Fix Carton texture left top missing pixel on render
+
+TODO :
+    - Datagen all JSON files
+        - Recipes
+        - Tags
+        - Models
+        - BlockStates
+        - LootTables
+    -Drying Rack
+        - Horizontal Directional Block implementation for shape/facing in DryingRack
+        - Revisit DryingRackEntityRenderer
+            - Cleanup pPose translate and rotate
+
+Mod Ideas:
+    - Add Compost item to composter drops *rare*
+        - Compost item crafted with dirt to make fertile dirt
+            - Fertile dirt is unbreakable farmland without water :)
+    - Custom woods for all tree types
+        - Include custom drying racks, trapdoors, stairs, slabs etc.
+    - Food Ideas
+        - Garlic Bread
+            - Garlic Butter + Toast
+        - Pizzas
+            - Tomato Sauce
+            - Pizza oven
+        - Cheese
+            - Look up cheese making processes
+        - Butter
+            - Butter Churn

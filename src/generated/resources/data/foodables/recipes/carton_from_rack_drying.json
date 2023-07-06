@@ -1,6 +1,6 @@
 {
   "type": "foodables:rack_drying",
-  "dryingTime": 10,
+  "dryingTime": 1200,
   "ingredients": [
     {
       "item": "foodables:wet_carton"
