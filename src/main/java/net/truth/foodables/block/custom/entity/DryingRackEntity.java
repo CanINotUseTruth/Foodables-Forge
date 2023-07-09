@@ -14,12 +14,10 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.material.Fluid;
-import net.minecraft.world.level.material.FluidState;
-import net.minecraft.world.level.material.Fluids;
 import net.minecraftforge.common.util.LazyOptional;
 import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.ItemStackHandler;
+import net.truth.foodables.Foodables;
 import net.truth.foodables.recipe.DryingRackRecipe;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -47,7 +45,7 @@ public class DryingRackEntity extends BlockEntity {
 
     protected final ContainerData data;
     private int progress = 0;
-    private int maxProgress = 10;
+    private int maxProgress = 0;
 
     private LazyOptional<IItemHandler> lazyItemHandler = LazyOptional.empty();
 
@@ -103,6 +101,8 @@ public class DryingRackEntity extends BlockEntity {
     @Override
     protected void saveAdditional(CompoundTag pTag) {
         pTag.put("rack_inventory", itemStackHandler.serializeNBT());
+        pTag.putInt("drying_rack.progress", progress);
+        pTag.putInt("drying_rack.max_progress", maxProgress);
         super.saveAdditional(pTag);
     }
 
@@ -110,6 +110,8 @@ public class DryingRackEntity extends BlockEntity {
     public void load(@NotNull CompoundTag pTag) {
         super.load(pTag);
         itemStackHandler.deserializeNBT(pTag.getCompound("rack_inventory"));
+        progress = pTag.getInt("drying_rack.progress");
+        maxProgress = pTag.getInt("drying_rack.max_progress");
     }
 
     public void tick(Level level, BlockPos pPos, BlockState pState) {
