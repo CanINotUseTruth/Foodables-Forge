@@ -42,10 +42,5 @@ public class ModGlobalLootModifierProvider extends GlobalLootModifierProvider {
                 new LootTableIdCondition.Builder(new ResourceLocation("entities/squid")).build()},
                 ModItems.SQUID.get()
         ));
-        add("squid_from_fishing", new AddItemModifier(new LootItemCondition[] {
-                new LootTableIdCondition.Builder(new ResourceLocation("gameplay/fishing/fish")).build(),
-                LootItemRandomChanceCondition.randomChance(0.2F).build()},
-                ModItems.SQUID.get()
-        ));
     }
 }

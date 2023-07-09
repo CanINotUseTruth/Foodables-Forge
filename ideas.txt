@@ -1,5 +1,12 @@
 TODO : Before Next Release
-    - Complete!
+    - Drying Rack
+            - Horizontal Directional Block implementation for shape/facing in DryingRack
+            - Revisit DryingRackEntityRenderer
+                - Cleanup pPose translate and rotate
+            - Kick off Items when drying rack gets waterlogged?
+    - Add Seed Items / Crop Items to Farmer Trades - Custom Villager?
+    - Fix Steak Sandwich texture
+        - move up by 1 pixel
 
 TODO :
     - Datagen all JSON files
@@ -8,13 +15,6 @@ TODO :
         - Models
         - BlockStates
         - LootTables
-    - Drying Rack
-        - Horizontal Directional Block implementation for shape/facing in DryingRack
-        - Revisit DryingRackEntityRenderer
-            - Cleanup pPose translate and rotate
-    - When Forge Global Loot Modifiers are fixed ensure Squid drops from Squid
-    - Add Seed Items / Crop Items to Farmer Trades - Custom Villager?
-    - Kick off Items when drying rack gets waterlogged?
     - Dough Recipe 1-2 water bottle 3-4 water bucket
     - Worldgen controlled by config file
         - Allow modpack makers to edit spawn biomes for different features.
