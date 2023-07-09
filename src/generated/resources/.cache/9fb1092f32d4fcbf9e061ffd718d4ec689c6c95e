@@ -1,4 +1,4 @@
-// 1.20.1	2023-07-06T19:25:02.833684	Recipes
+// 1.20.1	2023-07-06T22:17:41.3890481	Recipes
 c95ee28ea958f9335aa7f91c4e5f0b8c71ee5767 data/foodables/advancements/recipes/bacon_jerky.json
 45d245cff571983f8419919b68d774b231b03682 data/foodables/advancements/recipes/beef_jerky.json
 3b97ce257329004da7234bc9cf467e291dffcb4f data/foodables/advancements/recipes/carton.json
@@ -13,5 +13,7 @@ f86b2af0a8469ce11e11ee41697360a47b8592b6 data/foodables/recipes/carton_from_rack
 aa3239e651596bb61dfe2119dc2de66213522fa3 data/foodables/recipes/chicken_jerky_from_rack_drying.json
 7bb218e8ea42e4a438dd5b27a0fa282734adad7d data/foodables/recipes/dried_peppercorn_from_rack_drying.json
 326046e43bc3bb26522e24d2c6b6223ac96fd2cc data/foodables/recipes/lamb_jerky_from_rack_drying.json
+cb690a80a4bd54dc1fcb4a72743823710f97019e data/foodables/recipes/leather_from_rack_drying.json
 45d5a9e21b76b2c5a1517e5cdfa58574b980d65f data/foodables/recipes/rabbit_jerky_from_rack_drying.json
 42eea6c7348f4b121b36ede2ec13b81e655f9063 data/foodables/recipes/zombie_jerky_from_rack_drying.json
+70bd3d6cb7a4854490c2a73d6157828bf44836a4 data/minecraft/advancements/recipes/leather.json

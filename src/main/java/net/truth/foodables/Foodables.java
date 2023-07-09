@@ -1,16 +1,10 @@
 package net.truth.foodables;
 
 import com.mojang.logging.LogUtils;
-import net.minecraft.advancements.critereon.LootTableTrigger;
-import net.minecraft.data.loot.LootTableProvider;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.ComposterBlock;
-import net.minecraft.world.level.storage.loot.LootPool;
-import net.minecraft.world.level.storage.loot.LootTable;
-import net.minecraft.world.level.storage.loot.entries.LootTableReference;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.event.LootTableLoadEvent;
 import net.minecraftforge.event.server.ServerStartingEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;

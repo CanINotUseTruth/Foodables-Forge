@@ -1,0 +1,12 @@
+{
+  "type": "foodables:rack_drying",
+  "dryingTime": 6000,
+  "ingredients": [
+    {
+      "item": "minecraft:rotten_flesh"
+    }
+  ],
+  "result": {
+    "item": "minecraft:leather"
+  }
+}

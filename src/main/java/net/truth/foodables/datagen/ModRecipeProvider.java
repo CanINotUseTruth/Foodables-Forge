@@ -3,6 +3,7 @@ package net.truth.foodables.datagen;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.FinishedRecipe;
 import net.minecraft.data.recipes.RecipeProvider;
+import net.minecraft.world.item.Items;
 import net.minecraftforge.common.crafting.conditions.IConditionBuilder;
 import net.truth.foodables.block.ModBlocks;
 import net.truth.foodables.datagen.custom.DryingRackRecipeBuilder;
@@ -35,7 +36,8 @@ public class ModRecipeProvider extends RecipeProvider{
                 .unlockedBy("has_drying_rack", has(ModBlocks.OAK_DRYING_RACK.get())).save(pWriter);
         new DryingRackRecipeBuilder(ModItems.PEPPERCORN.get(), ModItems.DRIED_PEPPERCORN.get(), 3000, 1)
                 .unlockedBy("has_drying_rack", has(ModBlocks.OAK_DRYING_RACK.get())).save(pWriter);
-
+        new DryingRackRecipeBuilder(Items.ROTTEN_FLESH, Items.LEATHER, 6000, 1)
+                .unlockedBy("has_drying_rack", has(ModBlocks.OAK_DRYING_RACK.get())).save(pWriter);
     }
 
 }

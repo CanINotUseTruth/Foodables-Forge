@@ -1,7 +1,5 @@
-TODO : Before Release
-    - Make Squids drop from fishing loot - until MobLoot is configurable
-    - Berry Bushes
-    - Fix Carton texture left top missing pixel on render
+TODO : Before Next Release
+    - Complete!
 
 TODO :
     - Datagen all JSON files
@@ -10,10 +8,16 @@ TODO :
         - Models
         - BlockStates
         - LootTables
-    -Drying Rack
+    - Drying Rack
         - Horizontal Directional Block implementation for shape/facing in DryingRack
         - Revisit DryingRackEntityRenderer
             - Cleanup pPose translate and rotate
+    - When Forge Global Loot Modifiers are fixed ensure Squid drops from Squid
+    - Add Seed Items / Crop Items to Farmer Trades - Custom Villager?
+    - Kick off Items when drying rack gets waterlogged?
+    - Dough Recipe 1-2 water bottle 3-4 water bucket
+    - Worldgen controlled by config file
+        - Allow modpack makers to edit spawn biomes for different features.
 
 Mod Ideas:
     - Add Compost item to composter drops *rare*

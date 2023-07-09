@@ -22,6 +22,8 @@ public class ModBiomeModifiers {
     public static final ResourceKey<BiomeModifier> ADD_TREE_BANANA = registerKey("add_tree_banana");
     public static final ResourceKey<BiomeModifier> ADD_TREE_PEPPERCORN = registerKey("add_tree_peppercorn");
     public static final ResourceKey<BiomeModifier> ADD_ORE_SALT = registerKey("add_ore_salt");
+    public static final ResourceKey<BiomeModifier> ADD_PATCH_BLACKBERRY = registerKey("add_patch_blackberry");
+    public static final ResourceKey<BiomeModifier> ADD_PATCH_BLUEBERRY = registerKey("add_patch_blueberry");
 
     public static void bootstrap(BootstapContext<BiomeModifier> context) {
         var placedFeatures = context.lookup(Registries.PLACED_FEATURE);
@@ -30,12 +32,12 @@ public class ModBiomeModifiers {
         context.register(ADD_ORE_SALT, new ForgeBiomeModifiers.AddFeaturesBiomeModifier(
                 biomes.getOrThrow(BiomeTags.IS_OVERWORLD),
                 HolderSet.direct(placedFeatures.getOrThrow(ModPlacedFeatures.SALT_ORE_PLACED_KEY)),
-                GenerationStep.Decoration.VEGETAL_DECORATION));
+                GenerationStep.Decoration.UNDERGROUND_ORES));
 
         context.register(ADD_TREE_APPLE, new ForgeBiomeModifiers.AddFeaturesBiomeModifier(
                 biomes.getOrThrow(BiomeTags.IS_TAIGA),
-                HolderSet.direct(placedFeatures.getOrThrow(ModPlacedFeatures.SALT_ORE_PLACED_KEY)),
-                GenerationStep.Decoration.UNDERGROUND_ORES));
+                HolderSet.direct(placedFeatures.getOrThrow(ModPlacedFeatures.APPLE_PLACED_KEY)),
+                GenerationStep.Decoration.VEGETAL_DECORATION));
 
         context.register(ADD_TREE_LEMON, new ForgeBiomeModifiers.AddFeaturesBiomeModifier(
                 biomes.getOrThrow(BiomeTags.IS_FOREST),
@@ -65,6 +67,17 @@ public class ModBiomeModifiers {
         context.register(ADD_TREE_PEPPERCORN, new ForgeBiomeModifiers.AddFeaturesBiomeModifier(
                 biomes.getOrThrow(Tags.Biomes.IS_PLAINS),
                 HolderSet.direct(placedFeatures.getOrThrow(ModPlacedFeatures.PEPPERCORN_PLACED_KEY)),
+                GenerationStep.Decoration.VEGETAL_DECORATION));
+
+
+        context.register(ADD_PATCH_BLACKBERRY, new ForgeBiomeModifiers.AddFeaturesBiomeModifier(
+                biomes.getOrThrow(BiomeTags.IS_FOREST),
+                HolderSet.direct(placedFeatures.getOrThrow(ModPlacedFeatures.BLACKBERRY_PLACED_KEY)),
+                GenerationStep.Decoration.VEGETAL_DECORATION));
+
+        context.register(ADD_PATCH_BLUEBERRY, new ForgeBiomeModifiers.AddFeaturesBiomeModifier(
+                biomes.getOrThrow(BiomeTags.IS_TAIGA),
+                HolderSet.direct(placedFeatures.getOrThrow(ModPlacedFeatures.BLUEBERRY_PLACED_KEY)),
                 GenerationStep.Decoration.VEGETAL_DECORATION));
     }
 

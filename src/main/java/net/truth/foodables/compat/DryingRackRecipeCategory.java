@@ -13,6 +13,7 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Font;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
 import net.truth.foodables.Foodables;
@@ -46,8 +47,20 @@ public class DryingRackRecipeCategory implements IRecipeCategory<DryingRackRecip
     protected void drawCookTime(DryingRackRecipe recipe, GuiGraphics guiGraphics, int y) {
         int dryingTime = recipe.getDryingTime();
         if (dryingTime > 0) {
-            int dryingTimeSeconds = dryingTime / 20;
-            Component timeString = Component.translatable("gui.jei.category.smelting.time.seconds", dryingTimeSeconds);
+            Component timeString;
+            int dryingTimeSeconds, dryingTimeMinutes;
+            if(dryingTime < 1200) {
+                dryingTimeSeconds = dryingTime / 20;
+                timeString = Component.translatable("gui.jei.category.rack.drying.time.seconds", dryingTimeSeconds);
+            }
+            else if(dryingTime % 1200 == 0) {
+                dryingTimeMinutes = dryingTime / 1200;
+                timeString = Component.translatable("gui.jei.category.rack.drying.time.minutes", dryingTimeMinutes);
+            } else {
+                dryingTimeMinutes = dryingTime / 1200;
+                dryingTimeSeconds = dryingTime % 1200 / 20;
+                timeString = Component.translatable("gui.jei.category.rack.drying.time.minutes.seconds", dryingTimeMinutes, dryingTimeSeconds);
+            }
             Minecraft minecraft = Minecraft.getInstance();
             Font fontRenderer = minecraft.font;
             int stringWidth = fontRenderer.width(timeString);

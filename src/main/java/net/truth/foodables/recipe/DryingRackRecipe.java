@@ -88,7 +88,6 @@ public class DryingRackRecipe implements Recipe<SimpleContainer> {
         public @NotNull DryingRackRecipe fromJson(ResourceLocation id, JsonObject json) {
             ItemStack output = ShapedRecipe.itemStackFromJson(GsonHelper.getAsJsonObject(json, "result"));
             int dryingTime = GsonHelper.getAsInt(json, "dryingTime");
-            Foodables.LOGGER.info(String.valueOf(dryingTime));
 
             JsonArray ingredients = GsonHelper.getAsJsonArray(json, "ingredients");
             NonNullList<Ingredient> inputs = NonNullList.withSize(1, Ingredient.EMPTY);

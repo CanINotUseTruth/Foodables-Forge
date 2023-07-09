@@ -10,9 +10,7 @@ import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.levelgen.VerticalAnchor;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
-import net.minecraft.world.level.levelgen.placement.HeightRangePlacement;
-import net.minecraft.world.level.levelgen.placement.PlacedFeature;
-import net.minecraft.world.level.levelgen.placement.PlacementModifier;
+import net.minecraft.world.level.levelgen.placement.*;
 import net.truth.foodables.Foodables;
 import net.truth.foodables.block.ModBlocks;
 import net.truth.foodables.worldgen.ore.ModOrePlacement;
@@ -28,6 +26,9 @@ public class ModPlacedFeatures {
     public static final ResourceKey<PlacedFeature> BANANA_PLACED_KEY = registerKey("banana_placed");
     public static final ResourceKey<PlacedFeature> PEPPERCORN_PLACED_KEY = registerKey("peppercorn_placed");
     public static final ResourceKey<PlacedFeature> SALT_ORE_PLACED_KEY = registerKey("salt_ore_placed");
+
+    public static final ResourceKey<PlacedFeature> BLACKBERRY_PLACED_KEY = registerKey("blackberry_placed");
+    public static final ResourceKey<PlacedFeature> BLUEBERRY_PLACED_KEY = registerKey("blueberry_placed");
 
     public static void bootstrap(BootstapContext<PlacedFeature> context) {
         HolderGetter<ConfiguredFeature<?, ?>> configuredFeatures = context.lookup(Registries.CONFIGURED_FEATURE);
@@ -57,6 +58,11 @@ public class ModPlacedFeatures {
         register(context, PEPPERCORN_PLACED_KEY, configuredFeatures.getOrThrow(ModConfiguredFeatures.PEPPERCORN_KEY),
                 VegetationPlacements.treePlacement(PlacementUtils.countExtra(0, 0.025f, 1),
                         ModBlocks.PEPPERCORN_SAPLING.get()));
+
+        register(context, BLACKBERRY_PLACED_KEY, configuredFeatures.getOrThrow(ModConfiguredFeatures.BLACKBERRY_KEY),
+                List.of(RarityFilter.onAverageOnceEvery(12), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP,  BiomeFilter.biome()));
+        register(context, BLUEBERRY_PLACED_KEY, configuredFeatures.getOrThrow(ModConfiguredFeatures.BLUEBERRY_KEY),
+                List.of(RarityFilter.onAverageOnceEvery(12), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP,  BiomeFilter.biome()));
     }
 
     private static ResourceKey<PlacedFeature> registerKey(String name) {

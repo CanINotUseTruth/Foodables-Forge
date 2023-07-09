@@ -2,22 +2,25 @@ package net.truth.foodables.worldgen;
 
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BootstapContext;
+import net.minecraft.data.worldgen.placement.PlacementUtils;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.util.valueproviders.ConstantInt;
+import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.SweetBerryBushBlock;
+import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 import net.minecraft.world.level.levelgen.feature.Feature;
-import net.minecraft.world.level.levelgen.feature.configurations.FeatureConfiguration;
-import net.minecraft.world.level.levelgen.feature.configurations.OreConfiguration;
-import net.minecraft.world.level.levelgen.feature.configurations.TreeConfiguration;
+import net.minecraft.world.level.levelgen.feature.configurations.*;
 import net.minecraft.world.level.levelgen.feature.featuresize.TwoLayersFeatureSize;
 import net.minecraft.world.level.levelgen.feature.foliageplacers.BlobFoliagePlacer;
 import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvider;
 import net.minecraft.world.level.levelgen.feature.trunkplacers.StraightTrunkPlacer;
 import net.minecraft.world.level.levelgen.structure.templatesystem.RuleTest;
 import net.minecraft.world.level.levelgen.structure.templatesystem.TagMatchTest;
+import net.minecraftforge.fml.common.Mod;
 import net.truth.foodables.Foodables;
 import net.truth.foodables.block.ModBlocks;
 
@@ -33,6 +36,8 @@ public class ModConfiguredFeatures {
     public static final ResourceKey<ConfiguredFeature<?, ?>> BANANA_KEY = registerKey("banana");
     public static final ResourceKey<ConfiguredFeature<?, ?>> PEPPERCORN_KEY = registerKey("peppercorn");
     public static final ResourceKey<ConfiguredFeature<?, ?>> SALT_ORE_KEY = registerKey("salt_ore");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> BLACKBERRY_KEY = registerKey("blackberry");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> BLUEBERRY_KEY = registerKey("blueberry");
 
     public static void bootstrap(BootstapContext<ConfiguredFeature<?, ?>> context) {
         RuleTest stoneReplaceables = new TagMatchTest(BlockTags.STONE_ORE_REPLACEABLES);
@@ -90,6 +95,16 @@ public class ModConfiguredFeatures {
                 BlockStateProvider.simple(ModBlocks.PEPPERCORN_LEAVES.get()),
                 new BlobFoliagePlacer(ConstantInt.of(2), ConstantInt.of(0), 3),
                 new TwoLayersFeatureSize(1, 0, 1)).build());
+
+        register(context, BLACKBERRY_KEY, Feature.RANDOM_PATCH,
+                new RandomPatchConfiguration(24, 6, 2, PlacementUtils.onlyWhenEmpty(Feature.SIMPLE_BLOCK,
+                        new SimpleBlockConfiguration(BlockStateProvider.simple(ModBlocks.BLACKBERRY_BUSH.get().defaultBlockState()
+                                .setValue(SweetBerryBushBlock.AGE, 3))))));
+
+        register(context, BLUEBERRY_KEY, Feature.RANDOM_PATCH,
+                new RandomPatchConfiguration(24, 6, 2, PlacementUtils.onlyWhenEmpty(Feature.SIMPLE_BLOCK,
+                        new SimpleBlockConfiguration(BlockStateProvider.simple(ModBlocks.BLUEBERRY_BUSH.get().defaultBlockState()
+                                .setValue(SweetBerryBushBlock.AGE, 3))))));
     }
 
     public static ResourceKey<ConfiguredFeature<?, ?>> registerKey(String name) {

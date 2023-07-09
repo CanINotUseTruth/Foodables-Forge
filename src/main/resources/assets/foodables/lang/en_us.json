@@ -1,6 +1,10 @@
 {
   "creativetab.foodables.foodables_tab": "Foodables",
 
+  "gui.jei.category.rack.drying.time.seconds": "%ss",
+  "gui.jei.category.rack.drying.time.minutes": "%sm",
+  "gui.jei.category.rack.drying.time.minutes.seconds": "%sm%ss",
+
   "item.foodables.lettuce": "Lettuce",
   "item.foodables.tomato": "Tomato",
   "item.foodables.garlic": "Garlic",

@@ -91,9 +91,9 @@ public class ModItems {
             .food(new FoodProperties.Builder().nutrition(8).saturationMod(0.8F).build())));
 
     // Berries
-    public static final RegistryObject<Item> BLUEBERRIES = ITEMS.register("blueberries", () -> new Item(new Item.Properties()
+    public static final RegistryObject<Item> BLUEBERRIES = ITEMS.register("blueberries", () -> new ItemNameBlockItem(ModBlocks.BLUEBERRY_BUSH.get(),  new Item.Properties()
             .food(new FoodProperties.Builder().nutrition(3).saturationMod(0.5F).build())));
-    public static final RegistryObject<Item> BLACKBERRIES = ITEMS.register("blackberries", () -> new Item(new Item.Properties()
+    public static final RegistryObject<Item> BLACKBERRIES = ITEMS.register("blackberries", () -> new ItemNameBlockItem(ModBlocks.BLACKBERRY_BUSH.get(),  new Item.Properties()
             .food(new FoodProperties.Builder().nutrition(3).saturationMod(0.5F).build())));
 
     // Baked Fruit & Veggies
@@ -224,7 +224,7 @@ public class ModItems {
     public static final RegistryObject<Item> SLICED_BREAD = ITEMS.register("sliced_bread", () -> new Item(new Item.Properties()
             .food(new FoodProperties.Builder().nutrition(2).saturationMod(0.4F).build())));
     public static final RegistryObject<Item> TOAST = ITEMS.register("toast", () -> new Item(new Item.Properties()
-            .food(new FoodProperties.Builder().nutrition(4).saturationMod(0.8F).build())));
+            .food(new FoodProperties.Builder().nutrition(5).saturationMod(0.6F).build())));
     public static final RegistryObject<Item> BLT_SANDWICH = ITEMS.register("blt_sandwich", () -> new Item(new Item.Properties()
             .food(new FoodProperties.Builder().nutrition(12).saturationMod(0.6F).build())));
     public static final RegistryObject<Item> STEAK_SANDWICH = ITEMS.register("steak_sandwich", () -> new Item(new Item.Properties()

@@ -3,6 +3,7 @@ package net.truth.foodables.datagen;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.storage.loot.parameters.LootContextParamSets;
 import net.minecraft.world.level.storage.loot.predicates.*;
 import net.minecraftforge.common.data.GlobalLootModifierProvider;
 import net.minecraftforge.common.loot.LootTableIdCondition;
@@ -38,7 +39,13 @@ public class ModGlobalLootModifierProvider extends GlobalLootModifierProvider {
                 LootItemRandomChanceCondition.randomChance(0.15625F).build() }, ModItems.GARLIC_SEEDS.get()
         ));
         add("squid_from_squid", new AddItemModifier(new LootItemCondition[]{
-                new LootTableIdCondition.Builder(new ResourceLocation("entities/squid")).build()}, ModItems.SQUID.get()
+                new LootTableIdCondition.Builder(new ResourceLocation("entities/squid")).build()},
+                ModItems.SQUID.get()
+        ));
+        add("squid_from_fishing", new AddItemModifier(new LootItemCondition[] {
+                new LootTableIdCondition.Builder(new ResourceLocation("gameplay/fishing/fish")).build(),
+                LootItemRandomChanceCondition.randomChance(0.2F).build()},
+                ModItems.SQUID.get()
         ));
     }
 }

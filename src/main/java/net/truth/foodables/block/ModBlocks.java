@@ -11,6 +11,8 @@ import net.minecraftforge.registries.RegistryObject;
 import net.truth.foodables.Foodables;
 import net.truth.foodables.block.custom.DryingRackBlock;
 import net.truth.foodables.block.custom.FoodablesCropBlock;
+import net.truth.foodables.block.custom.bushes.BlackberryBushBlock;
+import net.truth.foodables.block.custom.bushes.BlueberryBushBlock;
 import net.truth.foodables.block.custom.crops.*;
 import net.truth.foodables.item.ModItems;
 import net.truth.foodables.worldgen.tree.*;
@@ -106,6 +108,10 @@ public class ModBlocks {
             () -> new FlowerPotBlock(BANANA_SAPLING.get(), BlockBehaviour.Properties.copy(Blocks.POTTED_OAK_SAPLING)));
 
     // TODO Berry Blocks
+    public static final RegistryObject<Block> BLACKBERRY_BUSH = BLOCKS.register("blackberry_bush",
+            () -> new BlackberryBushBlock(BlockBehaviour.Properties.copy(Blocks.SWEET_BERRY_BUSH).noCollission().noOcclusion()));
+    public static final RegistryObject<Block> BLUEBERRY_BUSH = BLOCKS.register("blueberry_bush",
+            () -> new BlueberryBushBlock(BlockBehaviour.Properties.copy(Blocks.SWEET_BERRY_BUSH).noCollission().noOcclusion()));
 
     // Crop Blocks
     public static final RegistryObject<Block> LETTUCE_CROP = BLOCKS.register("lettuce_crop",
