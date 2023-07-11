@@ -5,8 +5,7 @@ TODO : Before Next Release
                 - Cleanup pPose translate and rotate
             - Kick off Items when drying rack gets waterlogged?
     - Add Seed Items / Crop Items to Farmer Trades - Custom Villager?
-    - Fix Steak Sandwich texture
-        - move up by 1 pixel
+    - Shapeless dough recipes
 
 TODO :
     - Datagen all JSON files
@@ -15,7 +14,6 @@ TODO :
         - Models
         - BlockStates
         - LootTables
-    - Dough Recipe 1-2 water bottle 3-4 water bucket
     - Worldgen controlled by config file
         - Allow modpack makers to edit spawn biomes for different features.
 
@@ -35,3 +33,8 @@ Mod Ideas:
             - Look up cheese making processes
         - Butter
             - Butter Churn
+    - Tools have durability
+        - Knife is a weapon that doesn't read armor - low damage
+        - Knife of each level vanilla
+            - Knife that has damage can't be used for crafting - dull edge tooltip
+            - Other tools no durability?
