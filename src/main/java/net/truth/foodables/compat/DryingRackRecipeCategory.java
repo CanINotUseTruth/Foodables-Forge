@@ -13,7 +13,6 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Font;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
 import net.truth.foodables.Foodables;
@@ -41,10 +40,10 @@ public class DryingRackRecipeCategory implements IRecipeCategory<DryingRackRecip
 
     @Override
     public void draw(@NotNull DryingRackRecipe recipe, @NotNull IRecipeSlotsView recipeSlotsView, @NotNull GuiGraphics guiGraphics, double mouseX, double mouseY) {
-        drawCookTime(recipe, guiGraphics, 0);
+        drawCookTime(recipe, guiGraphics);
     }
 
-    protected void drawCookTime(DryingRackRecipe recipe, GuiGraphics guiGraphics, int y) {
+    protected void drawCookTime(DryingRackRecipe recipe, GuiGraphics guiGraphics) {
         int dryingTime = recipe.getDryingTime();
         if (dryingTime > 0) {
             Component timeString;
@@ -64,7 +63,7 @@ public class DryingRackRecipeCategory implements IRecipeCategory<DryingRackRecip
             Minecraft minecraft = Minecraft.getInstance();
             Font fontRenderer = minecraft.font;
             int stringWidth = fontRenderer.width(timeString);
-            guiGraphics.drawString(fontRenderer, timeString, getWidth() / 2 - stringWidth / 2 , y, 0xFF808080, false);
+            guiGraphics.drawString(fontRenderer, timeString, getWidth() / 2 - stringWidth / 2 , 0, 0xFF808080, false);
         }
     }
 

@@ -17,7 +17,6 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.common.util.LazyOptional;
 import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.ItemStackHandler;
-import net.truth.foodables.Foodables;
 import net.truth.foodables.recipe.DryingRackRecipe;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -30,7 +29,7 @@ public class DryingRackEntity extends BlockEntity {
         @Override
         protected void onContentsChanged(int slot) {
             setChanged();
-            if(!level.isClientSide()) {
+            if(!Objects.requireNonNull(level).isClientSide()) {
                 level.sendBlockUpdated(getBlockPos(),getBlockState(), getBlockState(), 3);
             }
         }
@@ -160,7 +159,7 @@ public class DryingRackEntity extends BlockEntity {
         return recipe.isPresent();
     }
 
-    private boolean hasRecipe(ItemStack stack) {
+    public boolean hasRecipe(ItemStack stack) {
         SimpleContainer inventory = new SimpleContainer(1);
         inventory.setItem(0, stack);
         Optional<DryingRackRecipe> recipe = Objects.requireNonNull(this.level).getRecipeManager().getRecipeFor(DryingRackRecipe.Type.INSTANCE, inventory, level);
@@ -180,7 +179,7 @@ public class DryingRackEntity extends BlockEntity {
     }
 
     @Override
-    public CompoundTag getUpdateTag() {
+    public @NotNull CompoundTag getUpdateTag() {
         return saveWithoutMetadata();
     }
 

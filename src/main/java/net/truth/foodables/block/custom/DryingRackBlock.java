@@ -29,6 +29,7 @@ import net.truth.foodables.block.custom.entity.ModBlockEntities;
 import org.jetbrains.annotations.NotNull;
 
 import javax.annotation.Nullable;
+import java.util.Objects;
 
 public class DryingRackBlock extends BaseEntityBlock implements SimpleWaterloggedBlock {
 
@@ -43,6 +44,7 @@ public class DryingRackBlock extends BaseEntityBlock implements SimpleWaterlogge
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> pBuilder) {
         pBuilder.add(FACING, WATERLOGGED);
     }
+
 
     @SuppressWarnings("deprecation")
     public @NotNull VoxelShape getShape(BlockState pState, @NotNull BlockGetter pLevel, @NotNull BlockPos pPos, @NotNull CollisionContext pContext) {
@@ -75,10 +77,26 @@ public class DryingRackBlock extends BaseEntityBlock implements SimpleWaterlogge
         return super.updateShape(pState, pFacing, pFacingState, pLevel, pCurrentPos, pFacingPos);
     }
 
+    @Override
+    public boolean placeLiquid(@NotNull LevelAccessor pLevel, @NotNull BlockPos pPos, BlockState pState, @NotNull FluidState pFluidState) {
+        if (!pState.getValue(BlockStateProperties.WATERLOGGED) && pFluidState.getType() == Fluids.WATER) {
+            if (!pLevel.isClientSide()) {
+                BlockEntity blockEntity = pLevel.getBlockEntity(pPos);
+                if (blockEntity instanceof DryingRackEntity) {
+                    ((DryingRackEntity) blockEntity).drops();
+                }
+                pLevel.setBlock(pPos, pState.setValue(BlockStateProperties.WATERLOGGED, Boolean.TRUE), 3);
+                pLevel.scheduleTick(pPos, pFluidState.getType(), pFluidState.getType().getTickDelay(pLevel));
+            }
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     /* BLOCK ENTITY */
 
     @Override
-    @SuppressWarnings("deprecation")
     public @NotNull RenderShape getRenderShape(@NotNull BlockState pState) {
         return RenderShape.MODEL;
     }
@@ -100,25 +118,21 @@ public class DryingRackBlock extends BaseEntityBlock implements SimpleWaterlogge
     @SuppressWarnings("deprecation")
     public @NotNull InteractionResult use(@NotNull BlockState pState, @NotNull Level pLevel, @NotNull BlockPos pPos, @NotNull Player pPlayer,
                                           @NotNull InteractionHand pHand, @NotNull BlockHitResult pHit) {
-        if(!pLevel.isClientSide() && pPlayer.getMainHandItem().getItem() == Items.WATER_BUCKET) {
-            pLevel.setBlock(pPos, pState.setValue(BlockStateProperties.WATERLOGGED, Boolean.TRUE), 3);
-            pLevel.scheduleTick(pPos, Fluids.WATER, Fluids.WATER.getTickDelay(pLevel));
-            return InteractionResult.SUCCESS;
-        }
-
         DryingRackEntity dryingRackEntity = (DryingRackEntity) pLevel.getBlockEntity(pPos);
-        ItemStackHandler itemStackHandler = dryingRackEntity.itemStackHandler;
+        ItemStackHandler itemStackHandler = Objects.requireNonNull(dryingRackEntity).itemStackHandler;
         ItemStack itemStack = itemStackHandler.getStackInSlot(0);
+        ItemStack heldItem = pPlayer.getMainHandItem();
+
+        if(heldItem.getItem() == Items.WATER_BUCKET) {
+            return InteractionResult.PASS;
+        }
 
         if (itemStack.isEmpty()) {
             // Hang item on rack
-            ItemStack heldItem = pPlayer.getMainHandItem();
             if (!heldItem.isEmpty() && !pState.getValue(WATERLOGGED) && itemStackHandler.isItemValid(0, heldItem)) {
                 if (!pLevel.isClientSide()) {
-                    if (pPlayer.isCreative()) {
-                        dryingRackEntity.itemStackHandler.setStackInSlot(0, heldItem.copyWithCount(1));
-                    } else
-                        dryingRackEntity.itemStackHandler.setStackInSlot(0, heldItem.split(1));
+                    dryingRackEntity.itemStackHandler.setStackInSlot(0,
+                            pPlayer.getAbilities().instabuild ? heldItem.copyWithCount(1) : heldItem.split(1));
                 }
                 return InteractionResult.sidedSuccess(true);
             }

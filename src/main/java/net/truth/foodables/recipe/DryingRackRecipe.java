@@ -29,13 +29,13 @@ public class DryingRackRecipe implements Recipe<SimpleContainer> {
     }
 
     @Override
-    public boolean matches(SimpleContainer pContainer, Level pLevel) {
+    public boolean matches(@NotNull SimpleContainer pContainer, Level pLevel) {
         if(pLevel.isClientSide()) return false;
         return inputItems.get(0).test(pContainer.getItem(0));
     }
 
     @Override
-    public ItemStack assemble(SimpleContainer p_44001_, RegistryAccess p_267165_) {
+    public @NotNull ItemStack assemble(@NotNull SimpleContainer p_44001_, @NotNull RegistryAccess p_267165_) {
         return result.copy();
     }
 
@@ -45,17 +45,17 @@ public class DryingRackRecipe implements Recipe<SimpleContainer> {
     }
 
     @Override
-    public ItemStack getResultItem(RegistryAccess p_267052_) {
+    public @NotNull ItemStack getResultItem(@NotNull RegistryAccess p_267052_) {
         return result.copy();
     }
 
     @Override
-    public NonNullList<Ingredient> getIngredients() {
+    public @NotNull NonNullList<Ingredient> getIngredients() {
         return this.inputItems;
     }
 
     @Override
-    public ResourceLocation getId() {
+    public @NotNull ResourceLocation getId() {
         return id;
     }
 
@@ -65,7 +65,7 @@ public class DryingRackRecipe implements Recipe<SimpleContainer> {
 
 
     @Override
-    public RecipeSerializer<?> getSerializer() {
+    public @NotNull RecipeSerializer<?> getSerializer() {
         return Serializer.INSTANCE;
     }
 
@@ -85,7 +85,7 @@ public class DryingRackRecipe implements Recipe<SimpleContainer> {
                 new ResourceLocation(Foodables.MOD_ID,"rack_drying");
 
         @Override
-        public @NotNull DryingRackRecipe fromJson(ResourceLocation id, JsonObject json) {
+        public @NotNull DryingRackRecipe fromJson(@NotNull ResourceLocation id, @NotNull JsonObject json) {
             ItemStack output = ShapedRecipe.itemStackFromJson(GsonHelper.getAsJsonObject(json, "result"));
             int dryingTime = GsonHelper.getAsInt(json, "dryingTime");
 
@@ -100,12 +100,10 @@ public class DryingRackRecipe implements Recipe<SimpleContainer> {
         }
 
         @Override
-        public DryingRackRecipe fromNetwork(ResourceLocation id, FriendlyByteBuf buf) {
+        public DryingRackRecipe fromNetwork(@NotNull ResourceLocation id, FriendlyByteBuf buf) {
             NonNullList<Ingredient> inputs = NonNullList.withSize(buf.readInt(), Ingredient.EMPTY);
 
-            for (int i = 0; i < inputs.size(); i++) {
-                inputs.set(i, Ingredient.fromNetwork(buf));
-            }
+            inputs.replaceAll(ignored -> Ingredient.fromNetwork(buf));
 
             ItemStack output = buf.readItem();
             int dryingTime = buf.readInt();

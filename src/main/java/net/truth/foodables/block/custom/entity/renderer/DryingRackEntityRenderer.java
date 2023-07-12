@@ -15,10 +15,11 @@ import net.minecraft.world.item.ItemDisplayContext;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LightLayer;
-import net.minecraft.world.level.block.state.properties.DirectionProperty;
-import net.truth.foodables.Foodables;
 import net.truth.foodables.block.custom.DryingRackBlock;
 import net.truth.foodables.block.custom.entity.DryingRackEntity;
+import org.jetbrains.annotations.NotNull;
+
+import java.util.Objects;
 
 public class DryingRackEntityRenderer implements BlockEntityRenderer<DryingRackEntity> {
 
@@ -28,7 +29,7 @@ public class DryingRackEntityRenderer implements BlockEntityRenderer<DryingRackE
 
     @Override
     public void render(DryingRackEntity pBlockEntity, float pPartialTick, PoseStack pPoseStack,
-                       MultiBufferSource pBufferSource, int pPackedLight, int pPackedOverlay) {
+                       @NotNull MultiBufferSource pBufferSource, int pPackedLight, int pPackedOverlay) {
 
         ItemRenderer itemRenderer = Minecraft.getInstance().getItemRenderer();
         ItemStack stack = pBlockEntity.getRenderStack();
@@ -52,7 +53,7 @@ public class DryingRackEntityRenderer implements BlockEntityRenderer<DryingRackE
             }
         }
 
-        itemRenderer.renderStatic(stack, ItemDisplayContext.FIXED, getLightLevel(pBlockEntity.getLevel(),
+        itemRenderer.renderStatic(stack, ItemDisplayContext.FIXED, getLightLevel(Objects.requireNonNull(pBlockEntity.getLevel()),
                 pBlockEntity.getBlockPos()), OverlayTexture.NO_OVERLAY, pPoseStack, pBufferSource, pBlockEntity.getLevel(), 1);
         pPoseStack.popPose();
     }

@@ -3,7 +3,6 @@ package net.truth.foodables.datagen;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.storage.loot.parameters.LootContextParamSets;
 import net.minecraft.world.level.storage.loot.predicates.*;
 import net.minecraftforge.common.data.GlobalLootModifierProvider;
 import net.minecraftforge.common.loot.LootTableIdCondition;

@@ -14,6 +14,8 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.gameevent.GameEvent;
 import org.jetbrains.annotations.NotNull;
 
+import java.util.Objects;
+
 public class ModDrink extends Item {
     public ModDrink(Properties pProperties) {
         super(pProperties);
@@ -28,9 +30,9 @@ public class ModDrink extends Item {
         if (player != null) player.awardStat(Stats.ITEM_USED.get(this));
 
         if (this.isEdible()) {
-            player.eat(pLevel, pStack);
+            Objects.requireNonNull(player).eat(pLevel, pStack);
             if (pStack.isEmpty()) return new ItemStack(Items.GLASS_BOTTLE);
-            if (player != null) player.getInventory().add(new ItemStack(Items.GLASS_BOTTLE));
+            player.getInventory().add(new ItemStack(Items.GLASS_BOTTLE));
         }
 
         pEntityLiving.gameEvent(GameEvent.DRINK);

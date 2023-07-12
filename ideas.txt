@@ -1,21 +1,17 @@
 TODO : Before Next Release
-    - Drying Rack
-            - Horizontal Directional Block implementation for shape/facing in DryingRack
-            - Revisit DryingRackEntityRenderer
-                - Cleanup pPose translate and rotate
-            - Kick off Items when drying rack gets waterlogged?
     - Add Seed Items / Crop Items to Farmer Trades - Custom Villager?
-    - Shapeless dough recipes
 
 TODO :
     - Datagen all JSON files
         - Recipes
         - Tags
+            - Common forge tags 'c' from Fabric
         - Models
         - BlockStates
         - LootTables
     - Worldgen controlled by config file
         - Allow modpack makers to edit spawn biomes for different features.
+        - Turn off feature groups i.e. trees, bushes, ores from spawning
 
 Mod Ideas:
     - Add Compost item to composter drops *rare*
@@ -38,3 +34,6 @@ Mod Ideas:
         - Knife of each level vanilla
             - Knife that has damage can't be used for crafting - dull edge tooltip
             - Other tools no durability?
+    -Config Ideas
+        - Implement compat for Configured once it's updated
+        - Rotten flesh to leather turn on and off

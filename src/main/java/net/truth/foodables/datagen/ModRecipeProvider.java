@@ -4,10 +4,10 @@ import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.FinishedRecipe;
 import net.minecraft.data.recipes.RecipeProvider;
 import net.minecraft.world.item.Items;
-import net.minecraftforge.common.crafting.conditions.IConditionBuilder;
 import net.truth.foodables.block.ModBlocks;
 import net.truth.foodables.datagen.custom.DryingRackRecipeBuilder;
 import net.truth.foodables.item.ModItems;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.function.Consumer;
 
@@ -18,7 +18,7 @@ public class ModRecipeProvider extends RecipeProvider{
     }
 
     @Override
-    protected void buildRecipes(Consumer<FinishedRecipe> pWriter) {
+    protected void buildRecipes(@NotNull Consumer<FinishedRecipe> pWriter) {
 
         new DryingRackRecipeBuilder(ModItems.WET_CARTON.get(), ModItems.CARTON.get(), 1200, 1)
                 .unlockedBy("has_drying_rack", has(ModBlocks.OAK_DRYING_RACK.get())).save(pWriter);

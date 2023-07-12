@@ -16,20 +16,22 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraft.world.phys.BlockHitResult;
 import net.truth.foodables.item.ModItems;
+import org.jetbrains.annotations.NotNull;
 
 public class BlackberryBushBlock extends SweetBerryBushBlock {
 
     public BlackberryBushBlock(BlockBehaviour.Properties pProperties) {
         super(pProperties);
-        this.registerDefaultState(this.stateDefinition.any().setValue(AGE, Integer.valueOf(0)));
+        this.registerDefaultState(this.stateDefinition.any().setValue(AGE, 0));
     }
 
-    public ItemStack getCloneItemStack(BlockGetter pLevel, BlockPos pPos, BlockState pState) {
+    public @NotNull ItemStack getCloneItemStack(@NotNull BlockGetter pLevel, @NotNull BlockPos pPos, @NotNull BlockState pState) {
         return new ItemStack(ModItems.BLACKBERRIES.get());
     }
 
     @Override
-    public InteractionResult use(BlockState pState, Level pLevel, BlockPos pPos, Player pPlayer, InteractionHand pHand, BlockHitResult pHit) {
+    public @NotNull InteractionResult use(BlockState pState, @NotNull Level pLevel,
+          @NotNull BlockPos pPos, @NotNull Player pPlayer, @NotNull InteractionHand pHand, @NotNull BlockHitResult pHit) {
         int i = pState.getValue(AGE);
         boolean flag = i == 3;
         if (!flag && pPlayer.getItemInHand(pHand).is(Items.BONE_MEAL)) {
@@ -37,8 +39,8 @@ public class BlackberryBushBlock extends SweetBerryBushBlock {
         } else if (i > 1) {
             int j = 1 + pLevel.random.nextInt(2);
             popResource(pLevel, pPos, new ItemStack(ModItems.BLACKBERRIES.get(), j + (flag ? 1 : 0)));
-            pLevel.playSound((Player)null, pPos, SoundEvents.SWEET_BERRY_BUSH_PICK_BERRIES, SoundSource.BLOCKS, 1.0F, 0.8F + pLevel.random.nextFloat() * 0.4F);
-            BlockState blockstate = pState.setValue(AGE, Integer.valueOf(1));
+            pLevel.playSound(null, pPos, SoundEvents.SWEET_BERRY_BUSH_PICK_BERRIES, SoundSource.BLOCKS, 1.0F, 0.8F + pLevel.random.nextFloat() * 0.4F);
+            BlockState blockstate = pState.setValue(AGE, 1);
             pLevel.setBlock(pPos, blockstate, 2);
             pLevel.gameEvent(GameEvent.BLOCK_CHANGE, pPos, GameEvent.Context.of(pPlayer, blockstate));
             return InteractionResult.sidedSuccess(pLevel.isClientSide);
