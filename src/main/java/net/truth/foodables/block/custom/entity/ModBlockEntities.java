@@ -24,7 +24,15 @@ public class ModBlockEntities {
                             ModBlocks.MANGROVE_DRYING_RACK.get(),
                             ModBlocks.CHERRY_DRYING_RACK.get(),
                             ModBlocks.CRIMSON_DRYING_RACK.get(),
-                            ModBlocks.WARPED_DRYING_RACK.get()).build(null));
+                            ModBlocks.WARPED_DRYING_RACK.get(),
+                            ModBlocks.BAMBOO_DRYING_RACK.get()
+                    ).build(null));
+
+    public static final RegistryObject<BlockEntityType<FarmBlockEntity>> FARM_BLOCK_BE =
+            BLOCK_ENTITIES.register("farm_block", () ->
+                    BlockEntityType.Builder.of(FarmBlockEntity::new,
+                            ModBlocks.FERTILE_FARMLAND.get()
+                    ).build(null));
 
     public static void register(IEventBus eventBus) {
         BLOCK_ENTITIES.register(eventBus);

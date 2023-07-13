@@ -28,6 +28,7 @@ public class ModCreativeModeTabs {
                         output.accept(ModBlocks.CHERRY_DRYING_RACK.get());
                         output.accept(ModBlocks.CRIMSON_DRYING_RACK.get());
                         output.accept(ModBlocks.WARPED_DRYING_RACK.get());
+                        output.accept(ModBlocks.BAMBOO_DRYING_RACK.get());
 
                         // Tree Related Blocks
                         output.accept(ModBlocks.APPLE_LEAVES.get());
@@ -179,6 +180,8 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.GROUND_PEPPER.get());
                         output.accept(ModItems.WHEAT_FLOUR.get());
                         output.accept(ModItems.GROUND_COCOA.get());
+                        output.accept(ModItems.COMPOST.get());
+                        output.accept(ModBlocks.FERTILE_FARMLAND.get());
 
                         // Seed Items
                         output.accept(ModItems.LETTUCE_SEEDS.get());

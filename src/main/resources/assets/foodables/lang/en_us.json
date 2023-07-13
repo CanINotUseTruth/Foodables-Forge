@@ -119,6 +119,7 @@
   "item.foodables.ground_salt": "Ground Salt",
   "item.foodables.wheat_flour": "Wheat Flour",
   "item.foodables.ground_cocoa": "Ground Cocoa",
+  "item.foodables.compost": "Compost",
 
   "item.foodables.mortar_and_pestle": "Mortar And Pestle",
   "item.foodables.knife": "Knife",
@@ -145,6 +146,7 @@
   "block.foodables.warped_drying_rack": "Warped Drying Rack",
   "block.foodables.mangrove_drying_rack": "Mangrove Drying Rack",
   "block.foodables.cherry_drying_rack": "Cherry Drying Rack",
+  "block.foodables.bamboo_drying_rack": "Bamboo Drying Rack",
 
   "block.foodables.salt_ore": "Salt Ore",
 
@@ -177,5 +179,7 @@
   "block.foodables.garlic_crop": "Garlic Crop",
 
   "block.foodables.blackberry_bush": "Blackberry Bush",
-  "block.foodables.blueberry_bush": "Blueberry Bush"
+  "block.foodables.blueberry_bush": "Blueberry Bush",
+
+  "block.foodables.fertile_farmland": "Fertile Farmland"
 }

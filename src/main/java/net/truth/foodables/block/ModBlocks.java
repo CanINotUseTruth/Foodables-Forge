@@ -10,7 +10,7 @@ import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 import net.truth.foodables.Foodables;
 import net.truth.foodables.block.custom.DryingRackBlock;
-import net.truth.foodables.block.custom.FoodablesCropBlock;
+import net.truth.foodables.block.custom.FoodablesFarmBlock;
 import net.truth.foodables.block.custom.bushes.BlackberryBushBlock;
 import net.truth.foodables.block.custom.bushes.BlueberryBushBlock;
 import net.truth.foodables.block.custom.crops.*;
@@ -40,9 +40,11 @@ public class ModBlocks {
     public static final RegistryObject<Block> CHERRY_DRYING_RACK = registerBlock("cherry_drying_rack",
             () -> new DryingRackBlock(BlockBehaviour.Properties.copy(Blocks.OAK_PLANKS)));
     public static final RegistryObject<Block> CRIMSON_DRYING_RACK = registerBlock("crimson_drying_rack",
-            () -> new DryingRackBlock(BlockBehaviour.Properties.copy(Blocks.OAK_PLANKS)));
+            () -> new DryingRackBlock(BlockBehaviour.Properties.copy(Blocks.OAK_PLANKS).sound(SoundType.NETHER_WOOD)));
     public static final RegistryObject<Block> WARPED_DRYING_RACK = registerBlock("warped_drying_rack",
-            () -> new DryingRackBlock(BlockBehaviour.Properties.copy(Blocks.OAK_PLANKS)));
+            () -> new DryingRackBlock(BlockBehaviour.Properties.copy(Blocks.OAK_PLANKS).sound(SoundType.NETHER_WOOD)));
+    public static final RegistryObject<Block> BAMBOO_DRYING_RACK = registerBlock("bamboo_drying_rack",
+            () -> new DryingRackBlock(BlockBehaviour.Properties.copy(Blocks.OAK_PLANKS).sound(SoundType.BAMBOO_WOOD)));
 
     // Food Blocks
     public static final RegistryObject<Block> HONEY_CAKE = registerBlock("honey_cake",
@@ -107,7 +109,7 @@ public class ModBlocks {
     public static final RegistryObject<Block> POTTED_BANANA_SAPLING = BLOCKS.register("potted_banana_sapling",
             () -> new FlowerPotBlock(BANANA_SAPLING.get(), BlockBehaviour.Properties.copy(Blocks.POTTED_OAK_SAPLING)));
 
-    // TODO Berry Blocks
+    // Berry Blocks
     public static final RegistryObject<Block> BLACKBERRY_BUSH = BLOCKS.register("blackberry_bush",
             () -> new BlackberryBushBlock(BlockBehaviour.Properties.copy(Blocks.SWEET_BERRY_BUSH).noCollission().noOcclusion()));
     public static final RegistryObject<Block> BLUEBERRY_BUSH = BLOCKS.register("blueberry_bush",
@@ -124,6 +126,10 @@ public class ModBlocks {
             () -> new RedOnionCropBlock(BlockBehaviour.Properties.copy(Blocks.WHEAT).noCollission().noOcclusion()));
     public static final RegistryObject<Block> GARLIC_CROP = BLOCKS.register("garlic_crop",
             () -> new GarlicCropBlock(BlockBehaviour.Properties.copy(Blocks.WHEAT).noCollission().noOcclusion()));
+
+    // Other Blocks
+    public static final RegistryObject<Block> FERTILE_FARMLAND = registerBlock("fertile_farmland",
+            () -> new FoodablesFarmBlock(BlockBehaviour.Properties.copy(Blocks.FARMLAND)));
 
     private static <T extends Block> RegistryObject<T> registerBlock(String name, Supplier<T> block) {
         RegistryObject<T> toReturn = BLOCKS.register(name, block);

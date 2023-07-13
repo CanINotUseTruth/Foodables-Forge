@@ -1,0 +1,28 @@
+{
+  "modId": "foodables",
+  "group": {
+    "name": "Foodables Seeds",
+    "enabledByDefault": true,
+    "defaultPayment": {
+      "item": "minecraft:emerald"
+    },
+    "defaultCategory": "farmingforblockheads:seeds"
+  },
+  "customEntries": [
+    {
+      "output": "foodables:lettuce_seed"
+    },
+    {
+      "output": "foodables:tomato_seed"
+    },
+    {
+      "output": "foodables:brown_onion_seed"
+    },
+    {
+      "output": "foodables:red_onion_seed"
+    },
+    {
+      "output": "foodables:garlic_seed"
+    }
+  ]
+}

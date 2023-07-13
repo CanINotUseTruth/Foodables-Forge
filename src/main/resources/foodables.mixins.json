@@ -1,0 +1,12 @@
+{
+  "required": true,
+  "package": "net.truth.foodables.mixin",
+  "compatibilityLevel": "JAVA_17",
+  "refmap": "foodables.refmap.json",
+  "mixins": [
+      "MixinCropBlock"
+  ],
+  "client": [
+  ],
+  "minVersion": "0.8"
+}

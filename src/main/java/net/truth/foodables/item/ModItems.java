@@ -1,6 +1,7 @@
 package net.truth.foodables.item;
 
 import net.minecraft.world.food.FoodProperties;
+import net.minecraft.world.item.BoneMealItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemNameBlockItem;
 import net.minecraft.world.item.Items;
@@ -238,6 +239,7 @@ public class ModItems {
     public static final RegistryObject<Item> GROUND_SALT = ITEMS.register("ground_salt", () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> WHEAT_FLOUR = ITEMS.register("wheat_flour", () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> GROUND_COCOA = ITEMS.register("ground_cocoa", () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> COMPOST = ITEMS.register("compost", () -> new BoneMealItem(new Item.Properties()));
 
 
     public static void register(IEventBus eventBus) {

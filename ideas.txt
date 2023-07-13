@@ -1,9 +1,11 @@
 TODO : Before Next Release
-    - Add Seed Items / Crop Items to Farmer Trades - Custom Villager?
+    - Texture Fertile Farmland and Compost
+    - Custom woods for all tree types
+        - Include custom drying racks, trapdoors, stairs, slabs etc.
 
 TODO :
-    - Datagen all JSON files
-        - Recipes
+    - Datagen all JSON files *
+        - Recipes - Maybe not crafting
         - Tags
             - Common forge tags 'c' from Fabric
         - Models
@@ -14,17 +16,13 @@ TODO :
         - Turn off feature groups i.e. trees, bushes, ores from spawning
 
 Mod Ideas:
-    - Add Compost item to composter drops *rare*
-        - Compost item crafted with dirt to make fertile dirt
-            - Fertile dirt is unbreakable farmland without water :)
-    - Custom woods for all tree types
-        - Include custom drying racks, trapdoors, stairs, slabs etc.
     - Food Ideas
         - Garlic Bread
             - Garlic Butter + Toast
         - Pizzas
             - Tomato Sauce
             - Pizza oven
+                - Better burn time for wood than coal?
         - Cheese
             - Look up cheese making processes
         - Butter
@@ -33,7 +31,9 @@ Mod Ideas:
         - Knife is a weapon that doesn't read armor - low damage
         - Knife of each level vanilla
             - Knife that has damage can't be used for crafting - dull edge tooltip
+            - Knife dulls if hit mob with armor?
             - Other tools no durability?
+    - Add Seed Items / Crop Items to Farmer Trades - Custom Villager?
     -Config Ideas
         - Implement compat for Configured once it's updated
         - Rotten flesh to leather turn on and off
