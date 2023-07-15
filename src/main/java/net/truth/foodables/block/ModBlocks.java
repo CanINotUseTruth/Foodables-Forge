@@ -128,6 +128,8 @@ public class ModBlocks {
             () -> new GarlicCropBlock(BlockBehaviour.Properties.copy(Blocks.WHEAT).noCollission().noOcclusion()));
 
     // Other Blocks
+    public static final RegistryObject<Block> FERTILE_DIRT = registerBlock("fertile_dirt",
+            () -> new Block(BlockBehaviour.Properties.copy(Blocks.DIRT)));
     public static final RegistryObject<Block> FERTILE_FARMLAND = registerBlock("fertile_farmland",
             () -> new FoodablesFarmBlock(BlockBehaviour.Properties.copy(Blocks.FARMLAND)));
 

@@ -181,6 +181,7 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.WHEAT_FLOUR.get());
                         output.accept(ModItems.GROUND_COCOA.get());
                         output.accept(ModItems.COMPOST.get());
+                        output.accept(ModBlocks.FERTILE_DIRT.get());
                         output.accept(ModBlocks.FERTILE_FARMLAND.get());
 
                         // Seed Items

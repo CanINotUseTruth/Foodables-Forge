@@ -1,5 +1,4 @@
 TODO : Before Next Release
-    - Texture Fertile Farmland and Compost
     - Custom woods for all tree types
         - Include custom drying racks, trapdoors, stairs, slabs etc.
 
@@ -14,6 +13,8 @@ TODO :
     - Worldgen controlled by config file
         - Allow modpack makers to edit spawn biomes for different features.
         - Turn off feature groups i.e. trees, bushes, ores from spawning
+    - Update Wiki
+        - Refactor wiki
 
 Mod Ideas:
     - Food Ideas

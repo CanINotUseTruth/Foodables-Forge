@@ -22,7 +22,6 @@ import org.jetbrains.annotations.NotNull;
 import javax.annotation.Nullable;
 
 public class FoodablesFarmBlock extends BaseEntityBlock {
-    // TODO add block entity for ticking
     protected static final VoxelShape SHAPE = Block.box(0.0D, 0.0D, 0.0D, 16.0D, 15.0D, 16.0D);
 
     public FoodablesFarmBlock(BlockBehaviour.Properties pProperties) {

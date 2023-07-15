@@ -1,8 +1,6 @@
 package net.truth.foodables.block.custom.entity;
 
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.Connection;
 import net.minecraft.network.protocol.Packet;
@@ -11,20 +9,18 @@ import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelAccessor;
-import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.CropBlock;
+import net.minecraft.world.level.block.PitcherCropBlock;
+import net.minecraft.world.level.block.TorchflowerCropBlock;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraftforge.common.util.LazyOptional;
-import net.truth.foodables.Foodables;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 public class FarmBlockEntity extends BlockEntity {
 
     private int progress = 0;
-    private int maxProgress = 600;
+    private int maxProgress = 1280; // TODO test amount to stack time of different crops
 
     public FarmBlockEntity(BlockPos pPos, BlockState pBlockState) {
         super(ModBlockEntities.FARM_BLOCK_BE.get(), pPos, pBlockState);
@@ -49,7 +45,7 @@ public class FarmBlockEntity extends BlockEntity {
     @Override
     public void load(@NotNull CompoundTag pTag) {
         super.load(pTag);
-        progress = pTag.getInt("drying_rack.progress");
+        progress = pTag.getInt("farm_block.progress");
     }
 
     public void tick(Level level, BlockPos pPos, BlockState pState) {
@@ -60,18 +56,43 @@ public class FarmBlockEntity extends BlockEntity {
         }
 
         if(hasProgressFinished() && !level.isClientSide()) {
-            if(Math.random() * 100 >= 50 && aboveBlockState.getBlock() instanceof CropBlock) {
-                Foodables.LOGGER.info("Growth applied");
-                ((CropBlock) aboveBlockState.getBlock()).performBonemeal((ServerLevel) level, RandomSource.create(), pPos.above(), aboveBlockState);
+            if(Math.random() * 100 >= 50) {
+                applyBonemealEffect(level, pPos, aboveBlockState);
+
             }
             resetProgress();
         }
     }
 
-    private boolean checkBlockAbove(BlockState aboveBlockState) {
+    private void applyBonemealEffect(Level level, BlockPos pPos, BlockState aboveBlockState) {
         if(aboveBlockState.getBlock() instanceof CropBlock) {
-            return aboveBlockState.getValue(CropBlock.AGE) < 7;
+            ((CropBlock) aboveBlockState.getBlock()).performBonemeal((ServerLevel) level, RandomSource.create(), pPos.above(), aboveBlockState);
         }
+
+        if(aboveBlockState.getBlock() instanceof PitcherCropBlock) {
+            ((PitcherCropBlock) aboveBlockState.getBlock()).performBonemeal((ServerLevel) level, RandomSource.create(), pPos.above(), aboveBlockState);
+        }
+    }
+
+    private boolean checkBlockAbove(BlockState aboveBlockState) {
+
+        if(aboveBlockState.getBlock() instanceof CropBlock) {
+            int maxAge = ((CropBlock) aboveBlockState.getBlock()).getMaxAge();
+            switch (maxAge) {
+                case 2 -> {
+                    return aboveBlockState.getValue(TorchflowerCropBlock.AGE) < ((CropBlock) aboveBlockState.getBlock()).getMaxAge();
+                }
+                case 3, 7 -> {
+                    return aboveBlockState.getValue(CropBlock.AGE) < ((CropBlock) aboveBlockState.getBlock()).getMaxAge();
+                }
+            }
+
+        }
+
+        if(aboveBlockState.getBlock() instanceof PitcherCropBlock) {
+            return aboveBlockState.getValue(PitcherCropBlock.AGE) < 4;
+        }
+
         return false;
     }
 

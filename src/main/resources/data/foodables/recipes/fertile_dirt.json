@@ -6,9 +6,18 @@
     },
     {
       "item": "foodables:compost"
+    },
+    {
+      "item": "foodables:compost"
+    },
+    {
+      "item": "foodables:compost"
+    },
+    {
+      "item": "foodables:compost"
     }
   ],
   "result": {
-    "item": "foodables:fertile_farmland"
+    "item": "foodables:fertile_dirt"
   }
 }

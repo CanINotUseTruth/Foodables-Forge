@@ -1,6 +1,9 @@
 package net.truth.foodables.event;
 
 import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
+import net.minecraft.tags.ItemTags;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.npc.VillagerProfession;
 import net.minecraft.world.entity.npc.VillagerTrades;
@@ -9,13 +12,13 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.item.trading.MerchantOffer;
 import net.minecraft.world.level.block.ComposterBlock;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.properties.IntegerProperty;
 import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.event.village.VillagerTradesEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.truth.foodables.Foodables;
+import net.truth.foodables.block.ModBlocks;
 import net.truth.foodables.item.ModItems;
 
 import java.util.List;
@@ -42,7 +45,7 @@ public class ModEvents {
             int villagerLevel = 3;
 
             trades.get(villagerLevel).add((pTrader, pRandom) -> new MerchantOffer(
-                    new ItemStack(Items.EMERALD, 2), stack, 8, 12, 0.1f
+                    new ItemStack(Items.EMERALD, 4), stack, 8, 12, 0.1f
             ));
 
         }
@@ -52,12 +55,21 @@ public class ModEvents {
     public static void addComposterDrop(PlayerInteractEvent event) {
         BlockState blockState = event.getLevel().getBlockState(event.getPos());
         if(blockState.getBlock() instanceof ComposterBlock && !event.getLevel().isClientSide()) {
-            if (isRightClick(event) && blockState.getValue(ComposterBlock.LEVEL) == 8 && Math.random() * 100 >= 50) {
+            if (isRightClick(event) && blockState.getValue(ComposterBlock.LEVEL) == 8 && Math.random() * 100 >= 75) {
                 Vec3 vec3 = Vec3.atLowerCornerWithOffset(event.getPos(), 0.5D, 1.01D, 0.5D).offsetRandom(event.getLevel().random, 0.7F);
                 ItemEntity itementity = new ItemEntity(event.getLevel(), vec3.x(), vec3.y(), vec3.z(), new ItemStack(ModItems.COMPOST.get()));
                 itementity.setDefaultPickUpDelay();
                 event.getLevel().addFreshEntity(itementity);
             }
+        }
+    }
+
+    @SubscribeEvent
+    public static void addHoeFertileDirt(PlayerInteractEvent event) {
+        BlockState blockState = event.getLevel().getBlockState(event.getPos());
+        if(blockState.getBlock() == ModBlocks.FERTILE_DIRT.get() && isRightClick(event) && event.getItemStack().is(ItemTags.HOES)) {
+            event.getLevel().setBlock(event.getPos(), ModBlocks.FERTILE_FARMLAND.get().defaultBlockState(), 3);
+            event.getLevel().playSound(event.getEntity(), event.getPos(), SoundEvents.HOE_TILL, SoundSource.BLOCKS);
         }
     }
 

@@ -1,7 +1,7 @@
 {
   "parent": "minecraft:block/template_farmland",
   "textures": {
-    "dirt": "minecraft:block/iron_block",
-    "top": "minecraft:block/farmland"
+    "dirt": "foodables:block/fertile_dirt",
+    "top": "foodables:block/fertile_farmland_top"
   }
 }
